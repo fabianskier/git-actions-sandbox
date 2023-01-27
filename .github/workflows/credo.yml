@@ -1,4 +1,4 @@
-name: Elixir CI
+name: Credo code analysis
 
 on:
   push:
@@ -15,10 +15,8 @@ defaults:
 
 jobs:
   build:
-    name: Build and test
-    runs-on: ubuntu-latest
-    env:
-      ImageOS: ubuntu20
+    name: Build and run code analysis
+    runs-on: ubuntu-20.04
 
     steps:
     - uses: actions/checkout@v3
@@ -27,8 +25,8 @@ jobs:
     - name: Set up Elixir
       uses: erlef/setup-beam@988e02bfe678367a02564f65ca2e37726dc0268f
       with:
-        elixir-version: '1.12.3'
-        otp-version: '24.1'
+        elixir-version: '1.14.2'
+        otp-version: '25.1.2'
     - name: Restore dependencies cache
       uses: actions/cache@v3
       with:
